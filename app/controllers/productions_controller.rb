@@ -58,6 +58,17 @@ class ProductionsController < ApplicationController
     redirect_to productions_url, notice: 'Production was successfully destroyed.'
   end
 
+  def assign_auditions
+    @production = set_production
+    @actors = @production.check_date_overlaps
+  end
+
+  def post_audition_requests
+    @production = set_production
+    @production.send_audition_request(params)
+    redirect_to @production
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_production
