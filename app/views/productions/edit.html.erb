@@ -1,6 +1,52 @@
 <h1>Editing Production</h1>
 
-<%= render 'form', production: @production %>
+<%= form_for @production do |form| %>
 
-<%= link_to 'Show', @production %> |
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :production_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :production_type %>
+    <%= form.text_field :production_type, id: :production_production_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :budget %>
+    <%= form.number_field :budget, id: :production_budget %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_begin %>
+    <%= form.date_select :date_begin, id: :production_date_begin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_end %>
+    <%= form.date_select :date_end, id: :production_date_end %>
+  </div>
+
+  <br><br>
+
+  <h4>Enter your roles here:</h4></br>
+
+  <div>
+    <%= form.fields_for :roles do |r| %>
+      <%= r.label :name %>
+      <%= r.text_field :name %><br>
+      <%= r.label :leading? %>
+      <%= r.check_box :leading? %><br><br>
+    <% end %>
+
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
 <%= link_to 'Back', productions_path %>

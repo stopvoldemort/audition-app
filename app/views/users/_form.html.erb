@@ -17,8 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest, id: :user_password_digest %>
+    <%= form.label :password %>
+    <%= form.password_field :password, id: :user_password_digest %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, id: :user_password_digest %>
   </div>
 
   <div class="field">
@@ -27,8 +32,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :studio? %>
-    <%= form.check_box :studio?, id: :user_studio? %>
+    <%= form.label "Are you with a studio?" %>
+    <%= form.check_box :is_studio, id: :user_is_studio %>
   </div>
 
   <div class="field">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002135147) do
+ActiveRecord::Schema.define(version: 20171002192428) do
 
   create_table "audition_requests", force: :cascade do |t|
     t.integer "actor_id"
@@ -33,21 +33,21 @@ ActiveRecord::Schema.define(version: 20171002135147) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
-    t.string "role_type"
     t.integer "actor_id"
     t.integer "production_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "leading?"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
     t.string "email"
-    t.boolean "studio?"
     t.integer "base_salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "is_studio"
   end
 
 end

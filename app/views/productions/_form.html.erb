@@ -36,10 +36,20 @@
     <%= form.date_select :date_end, id: :production_date_end %>
   </div>
 
-  <div class="field">
-    <%= form.label :studio_id %>
-    <%= form.date_select :studio_id, id: :production_studio_id %>
+  <br><br>
+
+  <h4>Enter your roles here:</h4></br>
+
+  <div>
+    <%= fields_for :roles do |role| %>
+      <%= role.label :name %>
+      <%= role.text_field :name %>
+      <%= role.label :leading? %>
+      <%= role.check_box :leading? %>
+    <% end %>
   </div>
+
+
 
   <div class="actions">
     <%= form.submit %>
