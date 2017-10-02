@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @production.title %>
+</p>
+
+<p>
+  <strong>Production type:</strong>
+  <%= @production.production_type %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @production.budget %>
+</p>
+
+<p>
+  <strong>Date begin:</strong>
+  <%= @production.date_begin %>
+</p>
+
+<p>
+  <strong>Date end:</strong>
+  <%= @production.date_end %>
+</p>
+
+<p>
+  <strong>Studio ID:</strong>
+  <%= @production.studio_id %>
+</p>
+
+<%= link_to 'Edit', edit_production_path(@production) %> |
+<%= link_to 'Back', productions_path %>

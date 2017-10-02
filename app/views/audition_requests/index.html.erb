@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audition Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Role</th>
+      <th>Accepted?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @audition_requests.each do |audition_request| %>
+      <tr>
+        <td><%= audition_request.actor_id %></td>
+        <td><%= audition_request.role_id %></td>
+        <td><%= audition_request.accepted? %></td>
+        <td><%= link_to 'Show', audition_request %></td>
+        <td><%= link_to 'Edit', edit_audition_request_path(audition_request) %></td>
+        <td><%= link_to 'Destroy', audition_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Audition Request', new_audition_request_path %>

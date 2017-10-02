@@ -1,0 +1,47 @@
+<%= form_with(model: production, local: true) do |form| %>
+  <% if production.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(production.errors.count, "error") %> prohibited this production from being saved:</h2>
+
+      <ul>
+      <% production.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :production_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :production_type %>
+    <%= form.text_field :production_type, id: :production_production_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :budget %>
+    <%= form.number_field :budget, id: :production_budget %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_begin %>
+    <%= form.date_select :date_begin, id: :production_date_begin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_end %>
+    <%= form.date_select :date_end, id: :production_date_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :studio_id %>
+    <%= form.date_select :studio_id, id: :production_studio_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
