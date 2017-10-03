@@ -1,0 +1,5 @@
+class ChangeAcceptedFromAuditionRequests < ActiveRecord::Migration[5.1]
+  def change
+    rename_column :audition_requests, :accepted?, :accepted
+  end
+end

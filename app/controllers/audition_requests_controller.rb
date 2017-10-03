@@ -2,53 +2,41 @@ class AuditionRequestsController < ApplicationController
   before_action :set_audition_request, only: [:show, :edit, :update, :destroy]
 
   # GET /audition_requests
-  # GET /audition_requests.json
   def index
-    @audition_requests = AuditionRequest.all
+    @outstanding_audition_requests = AuditionRequest.all.select do |ar|
+      ar.actor_id == session[:id] && ar.accepted == nil
+    end
+    @accepted_audition_requests = AuditionRequest.all.select do |ar|
+      ar.actor_id == session[:id] && ar.accepted == true
+    end
+    @actor = User.find(session[:id])
   end
 
-  # GET /audition_requests/1
-  # GET /audition_requests/1.json
-  def show
-  end
-
-  # GET /audition_requests/new
   def new
     @audition_request = AuditionRequest.new
   end
 
-  # GET /audition_requests/1/edit
-  def edit
-  end
-
-  # POST /audition_requests
-  # POST /audition_requests.json
   def create
     @audition_request = AuditionRequest.new(audition_request_params)
-
-    respond_to do |format|
-      if @audition_request.save
-        format.html { redirect_to @audition_request, notice: 'Audition request was successfully created.' }
-        format.json { render :show, status: :created, location: @audition_request }
-      else
-        format.html { render :new }
-        format.json { render json: @audition_request.errors, status: :unprocessable_entity }
-      end
+    if @audition_request.save
+      redirect_to @audition_request, notice: 'Audition request was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /audition_requests/1
   # PATCH/PUT /audition_requests/1.json
   def update
-    respond_to do |format|
-      if @audition_request.update(audition_request_params)
-        format.html { redirect_to @audition_request, notice: 'Audition request was successfully updated.' }
-        format.json { render :show, status: :ok, location: @audition_request }
-      else
-        format.html { render :edit }
-        format.json { render json: @audition_request.errors, status: :unprocessable_entity }
-      end
+  end
+
+  def accept_audtions
+    accept_audition_request_params.each do |ar_id|
+      @ar = AuditionRequest.find(ar_id)
+      @ar.accepted = true
+      @ar.save
     end
+    redirect_to audition_requests_path
   end
 
   # DELETE /audition_requests/1
@@ -69,6 +57,11 @@ class AuditionRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def audition_request_params
-      params.require(:audition_request).permit(:actor_id, :role_id, :accepted?)
+      params.require(:audition_request).permit(:actor_id, :role_id, :accepted)
     end
+
+    def accept_audition_request_params
+      params.require(:audition_request_ids)
+    end
+
 end

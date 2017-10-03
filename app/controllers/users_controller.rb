@@ -27,7 +27,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:id] = @user.id
-      redirect_to productions_path, notice: 'User was successfully created.'
+      redirect_to productions_path if @user.is_studio == 1
+      redirect_to audition_requests_path if @user.is_studio == 0
     else
       render :new
     end

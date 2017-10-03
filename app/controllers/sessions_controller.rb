@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       redirect_to '/signin', notice: 'You have entered an incorrect email or password'
     else
       session[:id] = @user.id
-      redirect_to productions_path
+      redirect_to productions_path if @user.is_studio == 1
+      redirect_to audition_requests_path if @user.is_studio == 0
     end
   end
 

@@ -1,5 +1,6 @@
 class ProductionsController < ApplicationController
   before_action :set_production, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   def index
     @user = User.find(session[:id])
@@ -69,10 +70,25 @@ class ProductionsController < ApplicationController
     redirect_to @production
   end
 
+  def assign_roles
+    @production = set_production
+    @actors = @production.check_date_overlaps
+  end
+
+  def post_assign_roles
+    @production = set_production
+    @production.update_role(params)
+    redirect_to @production
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_production
       @production = Production.find(params[:id])
+    end
+
+    def require_login
+      redirect_to '/signin' unless session.include? :id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

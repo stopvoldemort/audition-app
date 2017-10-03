@@ -12,4 +12,10 @@ class Role < ApplicationRecord
     end
   end
 
+  def auditioned
+    self.audition_requests.select do |req|
+      req.accepted
+    end.map {|req| req.actor }
+  end
+
 end

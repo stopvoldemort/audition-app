@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002192428) do
+ActiveRecord::Schema.define(version: 20171003135449) do
 
   create_table "audition_requests", force: :cascade do |t|
     t.integer "actor_id"
     t.integer "role_id"
-    t.boolean "accepted?"
+    t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

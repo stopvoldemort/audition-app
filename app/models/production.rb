@@ -32,5 +32,26 @@ class Production < ApplicationRecord
     end
   end
 
+  def update_role(params)
+    self.roles.each do |role|
+      if params.keys.include?(role.name) && params[role.name]["actor_id"]!=""
+        role.actor = User.find(params[role.name]["actor_id"])
+        role.save
+      end
+    end
+  end
+
+  def empty_roles
+    self.roles.select do |role|
+      role.actor_id == nil
+    end
+  end
+
+  def filled_roles
+    self.roles.select do |role|
+      role.actor_id
+    end
+  end
+
 
 end
