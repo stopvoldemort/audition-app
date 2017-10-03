@@ -12,14 +12,14 @@
 </p>
 
 <p>
-  <strong>Is Studio:</strong>
-  <%= @user.is_studio == 1 ? "Yes" : "No" %>
-</p>
-
-<p>
   <strong>Base salary:</strong>
   <%= @user.base_salary %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%if User.current_user_actor?(session[:id]) %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Home', '/audition_requests' %>
+<%else%>
+  <%= link_to 'All Actors', users_path %> |
+  <%= link_to 'Home', productions_path %>
+<% end %>

@@ -10,6 +10,15 @@ class User < ApplicationRecord
     end.flatten
   end
 
+  def self.actors
+    self.all.select {|user| user.is_studio == 0}
+  end
+
+  def self.current_user_actor?(id)
+    self.find(id).is_studio == 0
+  end
+
+
 
 
 end

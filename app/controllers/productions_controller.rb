@@ -1,6 +1,7 @@
 class ProductionsController < ApplicationController
   before_action :set_production, only: [:show, :edit, :update, :destroy]
   before_action :require_login
+  before_action :require_studio_id
 
   def index
     @user = User.find(session[:id])
@@ -89,6 +90,10 @@ class ProductionsController < ApplicationController
 
     def require_login
       redirect_to '/signin' unless session.include? :id
+    end
+
+    def require_studio_id
+      redirect_to '/signin' unless User.find(session[:id]).is_studio == 1
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

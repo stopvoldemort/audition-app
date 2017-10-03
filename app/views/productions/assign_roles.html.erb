@@ -1,15 +1,19 @@
 <h1><%= @production.title %></h1>
 <h2>Assign roles from among actors who have auditioned</h2>
 
-<br><br>
+<%if @production.audition_requests.empty? %>
+  <h3> You have not sent any audition requests. </h3>
+<%else %>
 
-<%= form_tag("/productions/#{@production.id}/assign_roles", method: "post") %>
- <% @production.roles.each do |role| %>
-  <%= label_tag "Role: #{role.name}" %>
-  <%= collection_select(role.name, :actor_id, role.auditioned, :id, :name, prompt: "Select actor") %> <br><br>
+  <br><br>
+
+  <%= form_tag("/productions/#{@production.id}/assign_roles", method: "post") %>
+   <% @production.roles.each do |role| %>
+    <%= label_tag "Role: #{role.name}" %>
+    <%= collection_select(role.name, :actor_id, role.auditioned, :id, :name, prompt: "Select actor") %> <br><br>
+  <% end %>
+  <%= submit_tag "Cast Roles" %>
 <% end %>
-<%= submit_tag "Cast Roles" %>
-
 <br><br>
 
 <%= link_to "Send audition requests", "/productions/#{@production.id}/assign_auditions" %>

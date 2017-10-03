@@ -1,5 +1,8 @@
 class AuditionRequestsController < ApplicationController
   before_action :set_audition_request, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  before_action :require_studio_id, only: [:new, :create, :destroy]
+
 
   # GET /audition_requests
   def index
@@ -53,6 +56,14 @@ class AuditionRequestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_audition_request
       @audition_request = AuditionRequest.find(params[:id])
+    end
+
+    def require_login
+      redirect_to '/signin' unless session.include? :id
+    end
+
+    def require_studio_id
+      redirect_to '/signin' unless User.find(session[:id]).is_studio == 1
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

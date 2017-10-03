@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/signout', to: 'sessions#destroy'
+  get '/actors', to: 'users#index'
   get '/productions/:id/assign_auditions', to: 'productions#assign_auditions'
   post '/productions/:id/assign_auditions', to: 'productions#post_audition_requests'
   get '/productions/:id/assign_roles', to: 'productions#assign_roles'
