@@ -28,10 +28,20 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       redirect_to productions_path if @user.is_studio == 1
-      redirect_to audition_requests_path if @user.is_studio == 0
+      redirect_to '/salary' if @user.is_studio == 0
     else
       render :new
     end
+  end
+
+  def get_salary
+    @user = User.find(session[:id])
+  end
+
+  def set_salary
+    @user = User.find(session[:id])
+    @user.update(user_params)
+    redirect_to audition_requests_path
   end
 
   def update

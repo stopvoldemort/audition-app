@@ -1,8 +1,8 @@
 class Production < ApplicationRecord
   belongs_to :studio, class_name: "User"
   has_many :roles, dependent: :destroy
-  has_many :actors, class_name: "User", through: :roles
-  has_many :audition_requests, through: :roles
+  has_many :actors, class_name: "User", through: :roles, dependent: :destroy
+  has_many :audition_requests, through: :roles, dependent: :destroy
 
   accepts_nested_attributes_for :roles
 
@@ -51,6 +51,11 @@ class Production < ApplicationRecord
     self.roles.select do |role|
       role.actor_id
     end
+  end
+
+  def remaining_budget
+    spent = self.actors.inject(0) {|memo, a| memo + a.base_salary}
+    self.budget - spent
   end
 
 

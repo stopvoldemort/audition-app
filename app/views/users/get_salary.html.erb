@@ -1,0 +1,10 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :base_salary %>
+    <%= form.number_field :base_salary, id: :user_base_salary %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Set Salary"%>
+  </div>
+<% end %>

@@ -7,9 +7,8 @@
     <tr>
       <th>Title</th>
       <th>Production type</th>
-      <th>Budget</th>
-      <th>Date begin</th>
-      <th>Date end</th>
+      <th>Initial Budget</th>
+      <th>Remaining Budget</th>
       <th>Roles Cast</th>
       <th colspan="3"></th>
     </tr>
@@ -18,15 +17,11 @@
   <tbody>
     <% @productions.each do |production| %>
       <tr>
-        <td><%= production.title %></td>
+        <td><%= link_to production.title, production %></td>
         <td><%= production.production_type %></td>
-        <td><%= production.budget %></td>
-        <td><%= production.date_begin %></td>
-        <td><%= production.date_end %></td>
-        <td><%= link_to "#{production.filled_roles.size} / #{production.roles.size}", "/productions/#{production.id}/assign_roles" %> </td>
-        <td><%= link_to 'Show', production %></td>
-        <td><%= link_to 'Edit', edit_production_path(production) %></td>
-        <td><%= link_to 'Destroy', production, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= number_to_currency(production.budget, precision: 0) %></td>
+        <td><%= number_to_currency(production.remaining_budget, precision: 0) %></td>
+        <td><%= "#{production.filled_roles.size} / #{production.roles.size}" %> </td>
       </tr>
     <% end %>
   </tbody>

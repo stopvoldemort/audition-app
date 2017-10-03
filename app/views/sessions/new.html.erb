@@ -1,7 +1,5 @@
 <h1>Sign In </h1>
 
-<%= link_to "Sign Up", new_user_path %>
-<br>
 <br>
 
 <% if flash[:notice] %>
@@ -15,3 +13,7 @@
 <%= password_field_tag :password %>
 <%= submit_tag "Sign In" %>
 <% end %>
+
+<br><br>
+
+<%= link_to "Not a member? Sign up!", new_user_path %>

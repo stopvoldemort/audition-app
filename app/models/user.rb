@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :roles, foreign_key: "actor_id"
-  has_many :audition_requests, foreign_key: "actor_id"
-  has_many :productions, foreign_key: "studio_id"
+  has_many :roles, foreign_key: "actor_id", dependent: :destroy
+  has_many :audition_requests, foreign_key: "actor_id", dependent: :destroy
+  has_many :productions, foreign_key: "studio_id", dependent: :destroy
   has_secure_password
 
   def actor_productions

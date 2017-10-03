@@ -1,7 +1,7 @@
 class Role < ApplicationRecord
   belongs_to :production
   belongs_to :actor, class_name: "User", optional: true
-  has_many :audition_requests
+  has_many :audition_requests, dependent: :destroy
   #validates :name, presence: true
 
   after_create :check_nil
