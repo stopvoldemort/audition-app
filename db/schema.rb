@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004142149) do
+ActiveRecord::Schema.define(version: 20171004174844) do
 
   create_table "audition_requests", force: :cascade do |t|
     t.integer "actor_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20171004142149) do
     t.datetime "updated_at", null: false
     t.integer "is_studio"
     t.string "bio"
+    t.string "headshot"
   end
 
 end

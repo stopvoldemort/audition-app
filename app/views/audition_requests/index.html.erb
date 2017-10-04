@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Your Audition Requests</h1>
+<%= image_tag(@actor.headshot.thumb.url, alt: 'Headshot') unless @actor.headshot.blank? %>
 <h3><%=@actor.name%></h3>
 <br><br>
 <!-- Outstanding audition requests -->

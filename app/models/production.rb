@@ -28,7 +28,8 @@ class Production < ApplicationRecord
   def send_audition_request(params)
     self.roles.each do |role|
       if params.keys.include?(role.name) && params[role.name]["actor_id"]!=""
-        AuditionRequest.create(role_id: role.id, actor_id: params[role.name]["actor_id"])
+        @audition_request = AuditionRequest.create(role_id: role.id, actor_id: params[role.name]["actor_id"])
+        ActorMailer.audition_email(@audition_request.actor).deliver_now
       end
     end
   end

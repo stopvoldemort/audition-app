@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# Use CarrierWave to upload images
+gem 'carrierwave', '~> 1.0'
+# Use MiniMagick to crop and scale images
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

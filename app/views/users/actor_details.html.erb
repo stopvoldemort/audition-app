@@ -9,6 +9,11 @@
     <%= form.text_area :bio, id: :user_bio %>
   </div>
 
+  <div class="field">
+    <%= form.label :headshot %>
+    <%= form.file_field :headshot, id: :user_headshot %>
+  </div>
+
   <div class="actions">
     <%= form.submit "Submit"%>
   </div>

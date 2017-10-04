@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :productions, foreign_key: "studio_id", dependent: :destroy
   has_secure_password
 
+  mount_uploader :headshot, HeadshotUploader
+
   def actor_productions
     self.roles.map do |r|
       r.production

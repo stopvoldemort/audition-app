@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Past Roles</th>
 
       <th colspan="3"></th>
     </tr>
@@ -16,9 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user_path(user) %></td>
-        <% user.roles.each do |role| %>
-        <td><%= "#{role.name} in '#{role.production.title}'" %><br></td>
-        <% end %>
+          <td><%= image_tag(user.headshot.small_thumb.url) unless user.headshot.blank? %><br></td>
       </tr>
     <% end %>
   </tbody>

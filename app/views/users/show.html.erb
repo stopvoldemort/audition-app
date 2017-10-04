@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag(@user.headshot.thumb.url, alt: 'Headshot') unless @user.headshot.blank? %>
+
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -21,10 +23,17 @@
   <%= @user.bio %>
 </p>
 
+<p><strong>Past Role(s):</strong></p>
+<ul>
+<% @user.roles.each do |r| %>
+  <li><%= "#{r.name} in '#{r.production.title}'" %></li>
+<% end %>
+</ul>
+
 
 <%if User.current_user_actor?(session[:id]) %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Home', '/audition_requests' %>
+  <%= link_to 'Home', audition_requests_path %>
 <%else%>
   <%= link_to 'All Actors', users_path %> |
   <%= link_to 'Home', productions_path %>
