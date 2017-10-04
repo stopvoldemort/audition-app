@@ -4,7 +4,6 @@ class Production < ApplicationRecord
   has_many :actors, class_name: "User", through: :roles, dependent: :destroy
   has_many :audition_requests, through: :roles, dependent: :destroy
 
-  accepts_nested_attributes_for :roles
 
   def check_date_overlaps
     start_date = self.date_begin
@@ -53,9 +52,17 @@ class Production < ApplicationRecord
     end
   end
 
+  def no_audition_requests_accepted
+    self.audition_requests.select {|ar| ar.accepted == true}.empty?
+  end
+
   def remaining_budget
     spent = self.actors.inject(0) {|memo, a| memo + a.base_salary}
     self.budget - spent
+  end
+
+  def has_roles
+    self.roles.length != 0
   end
 
 

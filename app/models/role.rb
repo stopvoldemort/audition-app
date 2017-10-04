@@ -6,6 +6,7 @@ class Role < ApplicationRecord
 
   after_create :check_nil
 
+
   def check_nil
     Role.last(3).each do |role|
       role.destroy if role.name == ""

@@ -28,17 +28,17 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       redirect_to productions_path if @user.is_studio == 1
-      redirect_to '/salary' if @user.is_studio == 0
+      redirect_to '/actor_details' if @user.is_studio == 0
     else
       render :new
     end
   end
 
-  def get_salary
+  def actor_details
     @user = User.find(session[:id])
   end
 
-  def set_salary
+  def set_actor_details
     @user = User.find(session[:id])
     @user.update(user_params)
     redirect_to audition_requests_path
@@ -74,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation, :email, :is_studio, :base_salary)
+      params.require(:user).permit(:name, :password, :password_confirmation, :email, :is_studio, :base_salary, :bio)
     end
 end

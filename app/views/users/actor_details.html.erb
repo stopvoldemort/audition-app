@@ -4,7 +4,12 @@
     <%= form.number_field :base_salary, id: :user_base_salary %>
   </div>
 
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area :bio, id: :user_bio %>
+  </div>
+
   <div class="actions">
-    <%= form.submit "Set Salary"%>
+    <%= form.submit "Submit"%>
   </div>
 <% end %>

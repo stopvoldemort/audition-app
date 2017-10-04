@@ -16,6 +16,12 @@
   <%= @user.base_salary %>
 </p>
 
+<p>
+  <strong>Bio:</strong>
+  <%= @user.bio %>
+</p>
+
+
 <%if User.current_user_actor?(session[:id]) %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Home', '/audition_requests' %>

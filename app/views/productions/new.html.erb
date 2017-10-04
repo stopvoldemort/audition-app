@@ -29,19 +29,6 @@
 
   <br><br>
 
-  <h4>Enter your roles here:</h4></br>
-
-  <div>
-    <%= form.fields_for :roles do |r| %>
-      <%= r.label :name %>
-      <%= r.text_field :name %><br>
-      <%= r.label :leading? %>
-      <%= r.check_box :leading? %><br><br>
-    <% end %>
-  </div>
-
-
-
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -1,1 +1,11 @@
+<h4>Enter your roles here:</h4></br>
 
+
+<%= form_for @role do |r| %>
+  <%= r.hidden_field :production_id %>
+  <%= r.label :name %>
+  <%= r.text_field :name %><br>
+  <%= r.label :description %>
+  <%= r.text_area :description %><br>
+  <%= r.submit %>
+<% end %>

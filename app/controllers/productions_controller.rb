@@ -18,17 +18,11 @@ class ProductionsController < ApplicationController
   # GET /productions/new
   def new
     @production = Production.new
-    @production.roles.build
-    @production.roles.build
-    @production.roles.build
   end
 
   # GET /productions/1/edit
   def edit
     set_production
-    @production.roles.build
-    @production.roles.build
-    @production.roles.build
   end
 
   # POST /productions
@@ -98,10 +92,6 @@ class ProductionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def production_params
-      params.require(:production).permit(:title, :production_type, :budget, :date_begin, :date_end, :studio_id,
-      roles_attributes: [
-        :name,
-        :leading?
-        ])
+      params.require(:production).permit(:title, :production_type, :budget, :date_begin, :date_end, :studio_id)
     end
 end

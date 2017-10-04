@@ -35,14 +35,40 @@
   <%= "#{@production.filled_roles.size} / #{@production.roles.size}" %>
 </p>
 
-<% if @production.empty_roles.empty? %>
-  <%= link_to 'Reassign Roles', "/productions/#{@production.id}/assign_roles" %>
-<% else %>
-  <%= link_to 'Cast Roles', "/productions/#{@production.id}/assign_roles" %>
+<% if @production.has_roles %>
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Actor</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @production.roles.each do |r| %>
+        <tr>
+          <td><%= r.name %></td>
+          <% if r.actor %>
+            <td><%= r.actor.name %></td>
+          <% else %>
+            <td><%= link_to 'Cast Role', "/productions/#{@production.id}/assign_roles" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <% end %>
 
 <br><br>
 
+<% if @production.empty_roles.empty? && @production.has_roles %>
+  <%= link_to 'Reassign Roles', "/productions/#{@production.id}/assign_roles" %>
+<% end %>
+
+<br><br>
+<%= link_to "Add a New Role", new_role_path %> <br><br>
 <%= link_to 'Edit Production', edit_production_path(@production) %> |
 <%= link_to 'Delete Production', @production, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', productions_path %>

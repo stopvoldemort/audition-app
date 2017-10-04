@@ -1,8 +1,8 @@
 <h1><%= @production.title %></h1>
 <h2>Assign roles from among actors who have auditioned</h2>
 
-<%if @production.audition_requests.empty? %>
-  <h3> You have not sent any audition requests. </h3>
+<%if @production.no_audition_requests_accepted %>
+  <h3> No actors have accepted audition requests for this role.</h3>
 <%else %>
 
   <br><br>

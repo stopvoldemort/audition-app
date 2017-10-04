@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003135449) do
+ActiveRecord::Schema.define(version: 20171004142149) do
 
   create_table "audition_requests", force: :cascade do |t|
     t.integer "actor_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171003135449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "studio_id"
+    t.string "description"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171003135449) do
     t.integer "production_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "leading?"
+    t.string "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20171003135449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "is_studio"
+    t.string "bio"
   end
 
 end
