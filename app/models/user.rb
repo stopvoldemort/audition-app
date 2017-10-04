@@ -18,6 +18,25 @@ class User < ApplicationRecord
     self.find(id).is_studio == 0
   end
 
+  def salary(production_type)
+    if self.base_salary
+      case production_type
+      when "Film"
+        self.base_salary * 2.5
+      when "Television Show"
+        self.base_salary * 1.5
+      when "Commercial"
+        self.base_salary * 1.0
+      when "Play"
+        self.base_salary * 0.8
+      when "Short Film"
+        self.base_salary * 0.7
+      when "Experimental"
+        self.base_salary * 0.5
+      end
+    end
+  end
+
 
 
 

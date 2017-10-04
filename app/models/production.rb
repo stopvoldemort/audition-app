@@ -4,6 +4,8 @@ class Production < ApplicationRecord
   has_many :actors, class_name: "User", through: :roles, dependent: :destroy
   has_many :audition_requests, through: :roles, dependent: :destroy
 
+  PRODUCTION_TYPES = ["Film", "Television Show", "Commercial", "Play", "Short Film", "Experimental"]
+
 
   def check_date_overlaps
     start_date = self.date_begin
@@ -57,12 +59,20 @@ class Production < ApplicationRecord
   end
 
   def remaining_budget
-    spent = self.actors.inject(0) {|memo, a| memo + a.base_salary}
-    self.budget - spent
+    if self.has_actors
+      spent = self.actors.inject(0) do |memo, a|
+        memo + a.salary(self.production_type)
+      end
+      self.budget - spent
+    end
   end
 
   def has_roles
     self.roles.length != 0
+  end
+
+  def has_actors
+    self.actors.length != 0
   end
 
 

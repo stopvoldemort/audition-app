@@ -9,7 +9,7 @@
 
   <div class="field">
     <%= form.label :production_type %>
-    <%= form.text_field :production_type, id: :production_production_type %>
+    <%= form.select :production_type, Production::PRODUCTION_TYPES, prompt: "Select type" %>
   </div>
 
   <div class="field">
