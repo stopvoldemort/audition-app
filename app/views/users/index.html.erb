@@ -22,16 +22,10 @@ th, td {
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user_path(user) %></td>
-          <td><%= image_tag(user.headshot.small_thumb.url) unless user.headshot.blank? %><br></td>
+        <td><%= image_tag(user.headshot.small_thumb.url) unless user.headshot.blank? %><br></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%if User.current_user_actor?(session[:id]) %>
-  <%= link_to 'Home', '/audition_requests' %>
-<%else%>
-  <%= link_to 'Home', productions_path %>
-<% end %>

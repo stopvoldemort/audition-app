@@ -36,7 +36,7 @@ class HeadshotUploader < CarrierWave::Uploader::Base
   end
 
   version :small_thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fit: [125, 175]
   end
 
 

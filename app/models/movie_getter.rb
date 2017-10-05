@@ -61,7 +61,7 @@ class MovieGetter
   # Can only run after fill_in_data, and studio has been created
   def create_production_hash
     self.film[:budget] = 1000000
-    self.film[:production_type] = "film"
+    self.film[:production_type] = "Film"
     self.film[:date_begin] = "2000-01-01 09:00:00"
     self.film[:date_end] = "2000-01-02 09:00:00"
     self.film[:studio_id] = User.find_by(email: self.studio[:email]).id

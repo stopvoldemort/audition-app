@@ -12,18 +12,20 @@
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <a class="navbar-brand" <%= link_to 'Stagefast', '/signin' %></a>
             <% if logged_in? && !current_user_actor? %>
+            <a class="navbar-brand" <%= link_to 'Stagefast', '/productions' %></a>
             <ul class="nav navbar-nav navbar-right">
               <li><%=link_to "New Production", new_production_path %></li>
               <li><%=link_to "Actors", actors_path %></li>
               <li><%=link_to "Sign Out", '/signout', method: "post" %></li>
             </ul>
             <% elsif logged_in? && current_user_actor? %>
+            <a class="navbar-brand" <%= link_to 'Stagefast', '/audition_requests' %></a>
             <ul class="nav navbar-nav navbar-right">
               <li><%=link_to "Profile", user_path(current_user) %></li>
               <li><%=link_to "Sign Out", '/signout', method: "post" %></li>
             <% else %>
+            <a class="navbar-brand" <%= link_to 'Stagefast', '/signin' %></a>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Sign up", new_user_path %></li>
             <% end %>
