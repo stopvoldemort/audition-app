@@ -48,6 +48,12 @@
     <%= form.file_field :headshot, id: :user_headshot %>
   </div>
 
+  <div class="field">
+    <label>Or enter a URL:</label>
+    <%= image_tag(@user.headshot_url) if @user.headshot? %>
+    <%= form.text_field :remote_headshot_url %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

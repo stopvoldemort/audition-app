@@ -34,6 +34,10 @@ gem 'carrierwave', '~> 1.0'
 # Use MiniMagick to crop and scale images
 gem 'mini_magick'
 
+# Use RestClient for parsing html 
+gem 'rest-client'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
