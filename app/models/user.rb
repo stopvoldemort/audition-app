@@ -20,6 +20,10 @@ class User < ApplicationRecord
     self.find(id).is_studio == 0
   end
 
+  def has_roles?
+    !self.roles.empty?
+  end
+
   def salary(production_type)
     if self.base_salary
       case production_type

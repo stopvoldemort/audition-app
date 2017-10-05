@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.actors
+    @users = User.actors.sort_by {|a| a.name.split(" ").last}
   end
 
   # GET /users/1

@@ -1,31 +1,35 @@
-<style>
-th, td {
-    padding: 10px;
-}
-</style>
 
 <p id="notice"><%= notice %></p>
 
 <h1>Actors</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
+<br><br>
 
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
 
-  <tbody>
+  <% @users.each do |user| %>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-xs-4">
+            <%= image_tag(user.headshot.small_thumb.url) unless user.headshot.blank? %><br>
+          </div>
+          <div class="col-xs-8">
+            <% if user.has_roles? %>
+              <ul>
+                <h4>Previous roles:</h4>
+                <% user.roles.each do |role| %>
+                  <li><%= "Played #{role.name} in '#{role.production.title}'" %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <h4><%= link_to user.name, user_path(user) %></h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.name, user_path(user) %></td>
-        <td><%= image_tag(user.headshot.small_thumb.url) unless user.headshot.blank? %><br></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+</div>
