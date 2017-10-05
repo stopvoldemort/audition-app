@@ -2,7 +2,7 @@
 <h2>Assign roles from among actors who have auditioned</h2>
 
 <%if @production.no_audition_requests_accepted %>
-  <h3> No actors have accepted audition requests for this role.</h3>
+  <p> No actors have accepted audition requests for this role.</p>
 <%else %>
 
   <br><br>
@@ -12,7 +12,7 @@
     <%= label_tag "Role: #{role.name}" %>
     <%= collection_select(role.name, :actor_id, role.auditioned, :id, :name, prompt: "Select actor") %> <br><br>
   <% end %>
-  <%= submit_tag "Cast Roles" %>
+  <%= submit_tag "Cast Roles", class: "btn btn-success" %>
 <% end %>
 <br><br>
 

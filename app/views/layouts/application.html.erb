@@ -3,12 +3,37 @@
   <head>
     <title>AuditionApp</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <a class="navbar-brand" <%= link_to 'Stagefast', '/signin' %></a>
+            <% if logged_in? && !current_user_actor? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%=link_to "New Production", new_production_path %></li>
+              <li><%=link_to "Actors", actors_path %></li>
+              <li><%=link_to "Sign Out", '/signout', method: "post" %></li>
+            </ul>
+            <% elsif logged_in? && current_user_actor? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%=link_to "Profile", user_path(current_user) %></li>
+              <li><%=link_to "Sign Out", '/signout', method: "post" %></li>
+            <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Sign up", new_user_path %></li>
+            <% end %>
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div class = 'container'>
+        <%= yield %>
+      </div>
+
   </body>
 </html>

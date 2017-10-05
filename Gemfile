@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 1.0'
 # Use MiniMagick to crop and scale images
 gem 'mini_magick'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,19 +1,43 @@
-<h1>Sign In </h1>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-<br>
+  <link rel="stylesheet" href="/sessions.css">
 
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+</head>
+<body>
+  <br>
 
-<%=form_tag('/signin', method: "post") do%>
-<%= label_tag :email %>
-<%= text_field_tag :email %>
-<%= label_tag :password %>
-<%= password_field_tag :password %>
-<%= submit_tag "Sign In" %>
-<% end %>
 
-<br><br>
 
-<%= link_to "Not a member? Sign up!", new_user_path %>
+      <h1>Stagefast</h1>
+
+<!-- Jumbotron -->
+
+  <% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <div class="notice"><%= flash[:notice] %></div>
+  </div>
+  <% end %>
+
+  <%=form_tag('/signin', method: "post") do%>
+  <div class="col-sm-2">
+    <div class="form-group">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, nil, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password %>
+      <%= password_field_tag :password, nil, class: 'form-control' %>
+      <br>
+        <%= submit_tag "Sign In", class: "btn btn-default" %>
+        <% end %>
+    </div>
+  </div>
+
+
+  <br><br>
+
+</body>
+</html>

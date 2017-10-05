@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
 <%= image_tag(@user.headshot.thumb.url, alt: 'Headshot') unless @user.headshot.blank? %>
 
@@ -24,12 +28,11 @@
 </p>
 
 <p><strong>Past Role(s):</strong></p>
-<ul>
 <% @user.roles.each do |r| %>
   <li><%= "#{r.name} in '#{r.production.title}'" %></li>
 <% end %>
 </ul>
-
+<br><br>
 
 <%if User.current_user_actor?(session[:id]) %>
   <%= link_to 'Edit', edit_user_path(@user) %> |

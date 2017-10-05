@@ -2,35 +2,35 @@
 
 <%= form_for @production do |form| %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :production_title %>
+    <%= form.text_field :title, id: :production_title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :production_type %>
-    <%= form.select :production_type, Production::PRODUCTION_TYPES, prompt: "Select type" %>
+    <%= form.select :production_type, Production::PRODUCTION_TYPES, prompt: "Select type", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :budget %>
-    <%= form.number_field :budget, id: :production_budget %>
+    <%= form.number_field :budget, id: :production_budget, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date_begin %>
-    <%= form.date_select :date_begin, id: :production_date_begin %>
+    <%= form.date_select :date_begin, id: :production_date_begin, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date_end %>
-    <%= form.date_select :date_end, id: :production_date_end %>
+    <%= form.date_select :date_end, id: :production_date_end, class: "form-control" %>
   </div>
 
   <br><br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success" %>
   </div>
 
 <% end %>

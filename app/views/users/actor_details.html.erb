@@ -1,20 +1,20 @@
 <%= form_with(model: @user, local: true) do |form| %>
-  <div class="field">
+  <div class="form-group">
     <%= form.label :base_salary %>
-    <%= form.number_field :base_salary, id: :user_base_salary %>
+    <%= form.number_field :base_salary, id: :user_base_salary, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :bio %>
-    <%= form.text_area :bio, id: :user_bio %>
+    <%= form.text_area :bio, id: :user_bio, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :headshot %>
-    <%= form.file_field :headshot, id: :user_headshot %>
+    <%= form.file_field :headshot, id: :user_headshot%>
   </div>
 
   <div class="actions">
-    <%= form.submit "Submit"%>
+    <%= form.submit "Submit", class: "btn btn-primary"%>
   </div>
 <% end %>

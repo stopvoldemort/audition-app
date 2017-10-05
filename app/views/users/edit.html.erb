@@ -13,43 +13,43 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
+    <%= form.text_field :name, id: :user_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password %>
-    <%= form.password_field :password, id: :user_password_digest %>
+    <%= form.password_field :password, id: :user_password_digest, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, id: :user_password_digest %>
+    <%= form.password_field :password_confirmation, id: :user_password_digest, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
+    <%= form.text_field :email, id: :user_email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :base_salary %>
-    <%= form.number_field :base_salary, id: :user_base_salary %>
+    <%= form.number_field :base_salary, id: :user_base_salary, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :bio %>
-    <%= form.text_area :bio, id: :user_bio %>
+    <%= form.text_area :bio, id: :user_bio, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :headshot %>
     <%= form.file_field :headshot, id: :user_headshot %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
 

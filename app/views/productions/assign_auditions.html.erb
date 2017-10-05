@@ -6,7 +6,7 @@
   <%= label_tag role.name %>
   <%= collection_select(role.name, :actor_id, @actors, :id, :name, include_blank: true) %> <br><br>
 <% end %>
-<%= submit_tag "Request Auditions" %>
+<%= submit_tag "Request Auditions", class: "btn btn-primary" %>
 
 <br><br>
 

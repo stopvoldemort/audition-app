@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:edit, :update, :show, :destroy]
+  helper_method :current_user_actor?
+  helper_method :current_user
+
   # GET /users
   # GET /users.json
   def index

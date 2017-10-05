@@ -1,4 +1,4 @@
-<h1>New User</h1>
+<h1>Create a Profile</h1>
 
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
@@ -13,24 +13,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class=form-group>
     <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
+    <%= form.text_field :name, id: :user_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class=form-group>
     <%= form.label :password %>
-    <%= form.password_field :password, id: :user_password_digest %>
+    <%= form.password_field :password, id: :user_password_digest, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class=form-group>
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, id: :user_password_digest %>
+    <%= form.password_field :password_confirmation, id: :user_password_digest, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class=form-group>
     <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
+    <%= form.text_field :email, id: :user_email, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -40,10 +40,8 @@
     <%= form.label :actor, "An actor" %>
     <%= form.radio_button :is_studio, "0", id: "actor" %>
   </div>
-
+  <br><br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<%= link_to 'Back', users_path %>
