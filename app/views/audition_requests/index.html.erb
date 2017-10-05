@@ -5,73 +5,76 @@ th, td {
 </style>
 
 <p id="notice"><%= notice %></p>
-<div class="text-left">
-  <h1>Your Audition Requests</h1>
-    <%= image_tag(@actor.headshot.thumb.url, alt: 'Headshot') unless @actor.headshot.blank? %>
-  <h3><%=@actor.name%></h3>
-</div>
-<br><br>
-<!-- Outstanding audition requests -->
-<%= form_tag '/audition_requests_update', method: 'post' do %>
+<h1>Your Audition Requests</h1><br><br>
+<div class="row">
+  <div class="col-xs-4">
+    <div class="text-left">
+        <%= image_tag(@actor.headshot.thumb.url, alt: 'Headshot') unless @actor.headshot.blank? %>
+      <h3><%=@actor.name%></h3>
+    </div>
+  </div>
+  <!-- Outstanding audition requests -->
+  <%= form_tag '/audition_requests_update', method: 'post' do %>
+
+    <table>
+      <thead>
+        <h3>Outstanding Audition Requests</h3>
+        <% if @outstanding_audition_requests.empty? %>
+          <p>You have no ouststanding audition requests.</p>
+        <% else %>
+          <tr>
+            <th>Role</th>
+            <th>Production</th>
+            <th>Accepted?</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        </div>
+      </div>
+    </div>
+        <tbody>
+          <% @outstanding_audition_requests.each do |audition_request| %>
+            <tr>
+              <td><%= audition_request.role.name %></td>
+              <td><%= audition_request.role.production.title %></td>
+              <td><%= check_box_tag 'audition_request_ids[]', audition_request.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= submit_tag "Accept Audtions", class: "btn btn-success" %>
+    <% end %>
+  <% end %>
+  <!-- Outstanding audition requests -->
+
+  <br><br>
+
+  <!-- Accepted requests -->
   <table>
     <thead>
-      <h3>Outstanding Audition Requests</h3>
-      <% if @outstanding_audition_requests.empty? %>
-        <p>You have no ouststanding audition requests.</p>
+      <h3>Previously Accepted Requests</h3>
+      <% if @accepted_audition_requests.empty? %>
+        <p>You have not previously accepted any auditions.</p>
       <% else %>
         <tr>
           <th>Role</th>
           <th>Production</th>
-          <th>Accepted?</th>
           <th colspan="3"></th>
         </tr>
       </thead>
       </div>
     </div>
-  </div>
       <tbody>
-        <% @outstanding_audition_requests.each do |audition_request| %>
+        <% @accepted_audition_requests.each do |audition_request| %>
           <tr>
             <td><%= audition_request.role.name %></td>
             <td><%= audition_request.role.production.title %></td>
-            <td><%= check_box_tag 'audition_request_ids[]', audition_request.id %></td>
           </tr>
         <% end %>
-      </tbody>
-    </table>
-    <%= submit_tag "Accept Audtions", class: "btn btn-success" %>
-  <% end %>
-<% end %>
-<!-- Outstanding audition requests -->
-
-<br><br>
-
-<!-- Accepted requests -->
-<table>
-  <thead>
-    <h3>Previously Accepted Requests</h3>
-    <% if @accepted_audition_requests.empty? %>
-      <p>You have not previously accepted any auditions.</p>
-    <% else %>
-      <tr>
-        <th>Role</th>
-        <th>Production</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    </div>
-  </div>
-    <tbody>
-      <% @accepted_audition_requests.each do |audition_request| %>
-        <tr>
-          <td><%= audition_request.role.name %></td>
-          <td><%= audition_request.role.production.title %></td>
-        </tr>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
-
+    </tbody>
+  </table>
+</div>
 
 
 
