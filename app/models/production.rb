@@ -3,9 +3,15 @@ class Production < ApplicationRecord
   has_many :roles, dependent: :destroy
   has_many :actors, class_name: "User", through: :roles, dependent: :destroy
   has_many :audition_requests, through: :roles, dependent: :destroy
+  validate :no_time_travel
 
   PRODUCTION_TYPES = ["Film", "Television Show", "Commercial", "Play", "Short Film", "Experimental"]
 
+  def no_time_travel
+    if self.date_end < self.date_begin
+      self.errors[:date_end] << "must be after start date."
+    end
+  end
 
   def check_date_overlaps
     start_date = self.date_begin
