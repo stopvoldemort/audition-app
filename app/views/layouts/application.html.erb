@@ -15,6 +15,7 @@
             <% if logged_in? && !current_user_actor? %>
             <a class="navbar-brand" <%= link_to 'Stagefast', '/productions' %></a>
             <ul class="nav navbar-nav navbar-right">
+              <li><%=link_to "My Productions", productions_path %></li>
               <li><%=link_to "New Production", new_production_path %></li>
               <li><%=link_to "Actors", actors_path %></li>
               <li><%=link_to "Sign Out", '/signout', method: "post" %></li>

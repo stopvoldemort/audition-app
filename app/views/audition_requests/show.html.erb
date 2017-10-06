@@ -2,18 +2,10 @@
 
 <p>
   <strong>Actor:</strong>
-  <%= @audition_request.actor_id %>
+  <%= @audition_request.actor.name %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= @audition_request.role_id %>
+  <%= @audition_request.role.name %>
 </p>
-
-<p>
-  <strong>Accepted?:</strong>
-  <%= @audition_request.accepted %>
-</p>
-
-<%= link_to 'Edit', edit_audition_request_path(@audition_request) %> |
-<%= link_to 'Back', audition_requests_path %>

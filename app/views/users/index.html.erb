@@ -10,6 +10,9 @@
   <% @users.each do |user| %>
     <div class="col-sm-4">
       <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= link_to user.name, user_path(user) %></h4>
+        </div>
         <div class="panel-body">
           <div class="col-xs-4">
             <%= image_tag(user.headshot.small_thumb.url) unless user.headshot.blank? %><br>
@@ -26,7 +29,17 @@
           </div>
         </div>
         <div class="panel-footer">
-          <h4><%= link_to user.name, user_path(user) %></h4>
+          <%= form_tag audition_requests_path do %>
+            <div class="row">
+              <div class="col-xs-9">
+                <%= hidden_field_tag "audition_request[actor_id]", user.id  %>
+                <h5><%= collection_select :audition_request, :role_id, @roles, :id, :role_in_production, prompt: "Request audition"  %></h5>
+              </div>
+              <div class="col-xs-1">
+                <%= submit_tag "Send", class: "btn btn-default" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

@@ -19,4 +19,17 @@ class Role < ApplicationRecord
     end.map {|req| req.actor }
   end
 
+  def self.unfilled_roles_for_logged_in_studio(session_id)
+    @studio = User.find_by(id: session_id)
+    if @studio.is_studio==1
+      @studio.productions.map do |p|
+        p.roles.select {|r| !r.actor_id}
+      end.flatten
+    end
+  end
+
+  def role_in_production
+    "#{self.name} in '#{self.production.title}'".truncate(35)
+  end
+
 end

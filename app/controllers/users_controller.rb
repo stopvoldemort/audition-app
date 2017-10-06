@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.actors.sort_by {|a| a.name.split(" ").last}
+    @roles = Role.unfilled_roles_for_logged_in_studio(session[:id])
   end
 
   # GET /users/1
