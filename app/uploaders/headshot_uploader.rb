@@ -32,11 +32,11 @@ class HeadshotUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [350, 350]
+    process resize_and_pad: [250, 350]
   end
 
   version :small_thumb do
-    process resize_to_fit: [125, 175]
+    process resize_and_pad: [125, 175]
   end
 
 
