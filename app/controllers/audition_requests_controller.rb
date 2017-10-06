@@ -22,7 +22,7 @@ class AuditionRequestsController < ApplicationController
   def create
     @audition_request = AuditionRequest.new(audition_request_params)
     if @audition_request.save
-      redirect_to @audition_request, notice: 'Audition request was successfully created.'
+      redirect_to @audition_request, notice: 'Audition request was successfully sent.'
     else
       render :new
     end
