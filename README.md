@@ -1,24 +1,23 @@
-# README
+# Welcome To StageFast.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project for the Flatiron School, completed six weeks into the software engineering program. It is not a "real" website -- the actors, productions, studios, and roles are all randomly seeded using data scraped from IMDB.
 
-Things you may want to cover:
+Demonstration: https://youtu.be/cdXVMXBFP5E
 
-* Ruby version
+## Description
 
-* System dependencies
+The goal of this website is to make it easier for studio managers to cast actors in roles in upcoming productions, without going through agents as the middleman.
 
-* Configuration
+Studio representatives are able to create productions, invite actors to audition, and manage who has been cast for each role. They are also able to manage the overall acting budget for a production.
 
-* Database creation
+Actors can make a profile page with their profile, headshot, and past roles.
 
-* Database initialization
+## Technologies
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby on Rails
+* Nokogiri to scrape seed data
+* CarrierWave
+* MiniMagick
+* Bootstrap
+* RestClient
+* bcrypt
