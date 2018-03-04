@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:id] = @user.id
+      UserNotifier.send_signup_email(@user).deliver
       redirect_to productions_path if @user.is_studio == 1
       redirect_to '/actor_details' if @user.is_studio == 0
     else
